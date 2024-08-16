@@ -1,8 +1,8 @@
 [project]
-name = 'python-template'
-description = 'This is a python template that we use to create a new python template. Change the description here.'
+name = 'package-e'
+description = 'Package E is part of a broder project of Python package management.'
 readme = 'README.md'
-version = '0.1.0'
+version = '1.0.0'
 requires-python = '>=3.11'
 dependencies = ['numpy']  # Doesn't need 3rd-party numpy. Just a placeholder as an example.
 

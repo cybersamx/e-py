@@ -1,6 +1,8 @@
-# Python Template
+# Package E
 
-A python template that we can use to create other Python template. It provides the pertinent setup and boilerplate code needed in a new python project.
+Package E is part of a broder project of Python package management. 
+
+This package serves as the topmost package in the package graph and provides arithmetic functions.
 
 ## Setup
 

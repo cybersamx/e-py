@@ -1,13 +1,14 @@
 ROOT_DIR := $(shell git rev-parse --show-toplevel)
 VENV := $(ROOT_DIR)/.venv
 PYTHON := $(VENV)/bin/python3
+TWINE := $(VENV)/bin/twine
 PIP := $(VENV)/bin/pip
 VIRTUAL_ENV := python3 -m venv
 REQUIREMENTS := requirements.txt
 REQUIREMENTS_TOOLS := requirements-tools.txt
 TESTS_DIR := tests
 
-.PHONY: all install venv run lint test clean
+.PHONY: all install venv publish run lint test clean
 
 # Default target
 
@@ -30,6 +31,14 @@ $(VENV)/bin/activate: requirements.txt requirements-tools.txt
 
 # Phony target for running the virtual environment setup
 venv: $(VENV)/bin/activate
+
+##@ publish: Publish the program to test PyPI
+
+publish: test
+	@echo "Publish the python project to test pypi."
+	$(PYTHON) -m build
+	$(TWINE) check dist/*
+	$(TWINE) upload -r testpypi dist/*
 
 ##@ run: Run the program
 
@@ -54,6 +63,8 @@ test: venv
 clean:
 	@echo "Removing build cache."
 	rm -rf __pycache__
+	rm -rf dist
+	rm -rf *.egg-info
 	find . -type f -name '*.pyc' -delete
 
 ##@ help: Help
