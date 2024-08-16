@@ -2,7 +2,7 @@ import unittest
 import math
 from dataclasses import dataclass
 
-from e.arithmetic import (
+from pkg_e.arithmetic import (
     add,
     subtract,
     multiply,
